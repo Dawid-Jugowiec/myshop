@@ -20,13 +20,13 @@ const ProductIdPage = ({data,}: InferGetStaticPropsType<typeof getStaticProps>) 
         imageUrl: data.image,
         imageAlt: data.title,
         rating: data.rating.rate,
+        longDescription: data.longDescription,
       }
     }/>
   </div>
 };
 
 export default ProductIdPage;
-
 export async function getStaticPaths() {
   const response = await fetch('https://fakestoreapi.com/products');
   const data: StoreApiResponse[] = await response.json();
@@ -69,6 +69,7 @@ export interface StoreApiResponse {
   title:       string;
   price:       number;
   description: string;
+  longDescription: string;
   category:    string;
   image:       string;
   rating:      {

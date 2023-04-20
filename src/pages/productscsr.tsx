@@ -1,4 +1,3 @@
-import { InferGetStaticPropsType } from "next";
 import { ProductDetails } from "@/components/Product";
 import { useQuery } from "react-query";
 
@@ -32,6 +31,7 @@ const ProductCsrPage = () => {
                 imageUrl: product.image,
                 imageAlt: product.title,
                 rating: product.rating.rate,
+                longDescription: product.longDescription,
               }
             }/>
           </li>
@@ -43,23 +43,24 @@ const ProductCsrPage = () => {
 
 export default ProductCsrPage;
 
-// export const getStaticProps = async () => {
-//   const response = await fetch('https://fakestoreapi.com/products');
-//   const data: StoreApiResponse[] = await response.json();
-//   console.log(data);
+export const getStaticProps = async () => {
+  const response = await fetch('https://fakestoreapi.com/products');
+  const data: StoreApiResponse[] = await response.json();
+  console.log(data);
 
-//   return {
-//     props: {
-//       data,
-//     }
-//   };
-// };
+  return {
+    props: {
+      data,
+    }
+  };
+};
 
 export interface StoreApiResponse {
   id:          number;
   title:       string;
   price:       number;
   description: string;
+  longDescription: string;
   category:    string;
   image:       string;
   rating:      {
