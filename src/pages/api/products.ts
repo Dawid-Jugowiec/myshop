@@ -19,7 +19,5 @@ export default async function handler(
 ) {
   const jsonData = await fsPromises.readFile('./src/pages/api/products.json');
   const objectData = JSON.parse(jsonData.toString());
-  
- 
   res.status(200).json(objectData)
 }
