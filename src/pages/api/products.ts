@@ -17,7 +17,8 @@ export default async function handler(
   req: NextApiRequest,
   res: any,
 ) {
-  const jsonData = await fsPromises.readFile('./src/pages/api/products.json');
+  const jsonDirectory = path.join(process.cwd(), 'json');
+  const jsonData = await fsPromises.readFile(jsonDirectory + '/products.json', 'utf8');
   const objectData = JSON.parse(jsonData.toString());
   res.status(200).json(objectData)
 }
