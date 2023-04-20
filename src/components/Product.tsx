@@ -12,6 +12,7 @@ export const ProductDetails = ({data}: ProductDetailsProps) => {
       </div>
       <h2>{data.title}</h2>
       <p className="p-4">{data.description}</p>
+      <p className="p-4">{data.longDescription}</p>
       <Rating rating={data.rating}/>
     </>
   );
@@ -24,6 +25,7 @@ interface ProductDetails {
   imageUrl: string,
   imageAlt: string,
   rating: number,
+  longDescription: string;
 }
 
 
