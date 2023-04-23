@@ -28,7 +28,7 @@ const ProductIdPage = ({data,}: InferGetStaticPropsType<typeof getStaticProps>) 
 
 export default ProductIdPage;
 export async function getStaticPaths() {
-  const response = await fetch('https://fakestoreapi.com/products');
+  const response = await fetch('https://myshop-polijlow9-dawid-jugowiec.vercel.app/api/products');
   const data: StoreApiResponse[] = await response.json();
   return {
     paths: data.map((product) => {
