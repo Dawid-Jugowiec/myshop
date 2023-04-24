@@ -14,9 +14,9 @@ export const ProductDetails = ({data}: ProductDetailsProps) => {
       <NextSeo
         title={data.title}
         description="Testing of description" 
-        canonical={`https://myshop-25uu6susv-dawid-jugowiec.vercel.app/api/products/${data?.id}`}
+        canonical={`https://myshop-dawid-jugowiec.vercel.app/api/products/${data?.id}`}
         openGraph={{
-          url: `https://myshop-25uu6susv-dawid-jugowiec.vercel.app/api/products/${data?.id}`,
+          url: `https://myshop-dawid-jugowiec.vercel.app/api/products/${data?.id}`,
           title: data.title,
           description: data.description,
           images: [
