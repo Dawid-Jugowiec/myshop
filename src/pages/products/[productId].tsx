@@ -28,7 +28,7 @@ const ProductIdPage = ({data,}: InferGetStaticPropsType<typeof getStaticProps>) 
 
 export default ProductIdPage;
 export async function getStaticPaths() {
-  const response = await fetch('https://myshop-dawid-jugowiec.vercel.app/api/products/');
+  const response = await fetch('https://myshop-hi4i8cgx7-dawid-jugowiec.vercel.app/api/products/');
   const data: StoreApiResponse[] = await response.json();
   return {
     paths: data.map((product) => {
@@ -54,7 +54,7 @@ export const getStaticProps = async ({params,}: GetStaticPropsContext<InferGetSt
       notFound: true,
     };
   }
-  const response = await fetch(`https://myshop-dawid-jugowiec.vercel.app/api/products/${params?.productId}`);
+  const response = await fetch(`https://myshop-hi4i8cgx7-dawid-jugowiec.vercel.app/api/products/${params?.productId}`);
   const data: StoreApiResponse | null = await response.json();
 
   return {

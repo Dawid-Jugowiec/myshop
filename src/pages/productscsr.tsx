@@ -3,7 +3,7 @@ import { ProductDetails } from "@/components/Product";
 import { useQuery } from "react-query";
 
 const getProducts = async () => {
-    const response = await fetch('https://myshop-dawid-jugowiec.vercel.app/api/products');
+    const response = await fetch('https://myshop-hi4i8cgx7-dawid-jugowiec.vercel.app/api/products');
     const data: StoreApiResponse[] = await response.json();
     return data;
 };
@@ -45,7 +45,7 @@ const ProductCsrPage = () => {
 export default ProductCsrPage;
 
 export const getStaticProps = async () => {
-  const response = await fetch('https://myshop-dawid-jugowiec.vercel.app/api/products');
+  const response = await fetch('https://myshop-hi4i8cgx7-dawid-jugowiec.vercel.app/api/products');
   const data: StoreApiResponse[] = await response.json();
 
   return {

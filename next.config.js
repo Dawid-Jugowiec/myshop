@@ -6,7 +6,7 @@ const nextConfig = {
     domains: [
       'fakestoreapi.com',
       'picsum.photos',
-      'myshop-dawid-jugowiec.vercel.app',
+      'myshop-hi4i8cgx7-dawid-jugowiec.vercel.app',
     ],
     formats: ['image/avif', 'image/webp'],
   },
