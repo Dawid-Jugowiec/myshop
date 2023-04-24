@@ -26,7 +26,7 @@ const ProductPage = ({data,}: InferGetStaticPropsType<typeof getStaticProps>) =>
 export default ProductPage;
 
 export const getStaticProps = async () => {
-  const response = await fetch('https://myshop-polijlow9-dawid-jugowiec.vercel.app/api/products');
+  const response = await fetch('https://fakestoreapi.com/products');
  
   const data: StoreApiResponse[] = await response.json();
 

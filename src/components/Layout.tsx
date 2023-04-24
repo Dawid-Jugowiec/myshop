@@ -10,10 +10,7 @@ interface LayoutProps {
 export const Layout = ({children}: LayoutProps) => {
   return (
     <div className="flex flex-col bg-green-300 min-h-screen">
-      <Head> 
-        <title> Shop testing </title>
-      </Head>
-      <meta name="description" content="First shop"></meta>
+        <meta name="description" content="First shop"></meta>
       <Header />
         <div className='flex-grow'>{children}</div>
       <Footer />

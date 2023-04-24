@@ -3,11 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
   images: {
-    domains: [
-      'fakestoreapi.com',
-      'picsum.photos',
-      'https://myshop-polijlow9-dawid-jugowiec.vercel.app/',
-    ],
+    domains: ['fakestoreapi.com', 'picsum.photos'],
     formats: ['image/avif', 'image/webp'],
   },
 };
