@@ -54,7 +54,7 @@ export const getStaticProps = async ({params,}: GetStaticPropsContext<InferGetSt
       notFound: true,
     };
   }
-  const response = await fetch(`https://myshop-hi4i8cgx7-dawid-jugowiec.vercel.app/api/products/${params?.productId}`);
+  const response = await fetch(`https://fakestoreapi.com/products/${params?.productId}`);
   const data: StoreApiResponse | null = await response.json();
 
   return {
