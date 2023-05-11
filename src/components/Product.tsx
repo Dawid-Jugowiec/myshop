@@ -4,6 +4,9 @@ import { Rating } from "./Rating"
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
+import { NewMarkdown } from "./NewMarkdown";
+import { ReturnMarkdown } from '../../utils';
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 
 const css = {width: '100%', height: 'auto', backgroundSize: 'contain'};
 
@@ -14,9 +17,9 @@ export const ProductDetails = ({data}: ProductDetailsProps) => {
       <NextSeo
         title={data.title}
         description="Testing of description" 
-        canonical={`https://fakestoreapi.com/products/${data?.id}`}
+        canonical={`https://myshop-orpin.vercel.app/products/${data?.id}`}
         openGraph={{
-          url: `https://fakestoreapi.com/products/${data?.id}`,
+          url: `https://myshop-orpin.vercel.app/products/${data?.id}`,
           title: data.title,
           description: data.description,
           images: [
@@ -28,7 +31,7 @@ export const ProductDetails = ({data}: ProductDetailsProps) => {
               type: 'image/jpeg',
             }
           ],
-          siteName: 'Fake shop',
+          siteName: 'My shop',
         }}
        /> 
         <Image src={data.imageUrl} alt={data.imageAlt} sizes="100vw" width={16} height={9} style={css}></Image>
@@ -36,7 +39,7 @@ export const ProductDetails = ({data}: ProductDetailsProps) => {
       <h2>{data.title}</h2>
       <p className="p-4">{data.description}</p>
       <article className="prose lg:prose-xl">
-        <ReactMarkdown>{data.longDescription}</ReactMarkdown>
+        { data.longDescription && typeof data.longDescription !== 'string' &&  <NewMarkdown>{data.longDescription}</NewMarkdown>}      
       </article>
       <Rating rating={data.rating}/>
     </>
@@ -50,7 +53,7 @@ interface ProductDetails {
   imageUrl: string,
   imageAlt: string,
   rating: number,
-  longDescription: string;
+  longDescription?: MDXRemoteSerializeResult<Record<string, unknown>> | string;
 }
 
 

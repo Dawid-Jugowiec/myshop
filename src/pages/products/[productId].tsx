@@ -2,8 +2,10 @@ import { ProductDetails } from "@/components/Product";
 import { GetStaticPathsContext, GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { serialize } from "next-mdx-remote/serialize";
 
-const ProductIdPage = ({data,}: InferGetStaticPropsType<typeof getStaticProps>) => {
+
+const ProductIdPage = ({data}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
   if(!data) {
     return <div>Coś poszło nie tak</div>
@@ -27,6 +29,7 @@ const ProductIdPage = ({data,}: InferGetStaticPropsType<typeof getStaticProps>) 
 };
 
 export default ProductIdPage;
+
 export async function getStaticPaths() {
   const response = await fetch('https://fakestoreapi.com/products/');
   const data: StoreApiResponse[] = await response.json();
@@ -55,11 +58,22 @@ export const getStaticProps = async ({params,}: GetStaticPropsContext<InferGetSt
     };
   }
   const response = await fetch(`https://fakestoreapi.com/products/${params?.productId}`);
+
   const data: StoreApiResponse | null = await response.json();
+
+  if(!data) {
+    return {
+      props: {},
+      notFound: true,
+    }
+  };
 
   return {
     props: {
-      data: data,
+      data: {
+        ...data,
+        longDescription: await serialize(data.longDescription),
+      },
     }
   };
 };
