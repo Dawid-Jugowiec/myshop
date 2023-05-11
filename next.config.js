@@ -6,9 +6,20 @@ const nextConfig = {
     domains: [
       'fakestoreapi.com',
       'picsum.photos',
+      'https://myshop-orpin.vercel.app/',
       'https://naszsklep-api.vercel.app',
+      'naszsklep-api.vercel.app',
     ],
     formats: ['image/avif', 'image/webp'],
+  },
+  async redirects() {
+    return [
+      {
+        source: '/productList',
+        destination: '/productList/1',
+        permanent: true,
+      },
+    ];
   },
 };
 
